@@ -161,6 +161,7 @@ ul {
   padding: 10px;
   width: 200px;
   display: none;
+  height: 300px;
 }
 
 img {
@@ -218,4 +219,14 @@ span {
   .biopic {
     display: block;
   }
+}
+
+.flex-item {
+  list-style-type: none;
+
+}
+
+.infowindow-place {
+  font-size: 16px;
+  font-weight: bold;
 }
