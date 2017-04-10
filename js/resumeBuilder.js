@@ -13,16 +13,19 @@ var work = {
 var projects = {
     "project": [
     {
-        "title":"Bachelor thesis",
-        "dates":"February 2014 - May 2014",
-        "description":"Piezo-Electric Materials",
-        "images": [ "http://lorempixel.com/400/200/sports", "http://lorempixel.com/400/200/sports"]
-    },
-    {
         "title":"Master thesis",
         "dates":"February 2016 - July 2016",
-        "description":"Study of Second-Order Non-Linearities in Strained Silicon for All-Optical Switching",
-        "images":[ "http://lorempixel.com/400/200","http://lorempixel.com/400/200"]
+        "description":"The title of this project was <strong>'Study of Second-Order " +
+        "Non-Linearities in Strained Silicon for All-Optical Switching' </strong> and was the " +
+        "final project for my Master's degree.",
+        "images":[ "images/master1.jpg","images/master2.jpg"]
+    },
+    {
+        "title":"Bachelor thesis",
+        "dates":"February 2014 - May 2014",
+        "description":"The title of this project was <strong>'Characterization of Piezo-Electric Thin " +
+        "Layers with Photo-Spectroscopy'</strong> and was the final project for my Bachelor's degree.",
+        "images": [ "images/bach1.jpg", "images/bach2.jpg"]
     }
     ]
 };
@@ -30,8 +33,8 @@ var projects = {
 var bio = {
     "name" : "Steven Van Roye",
     "role" : "Web Developer",
-    "welcomeMessage":"Hi there everybody !",
-    "biopic" : "images/homer.gif",
+    "welcomeMessage":"Welcome to my online resume !",
+    "biopic" : "images/Steven_Van_Roye.jpg",
     "contacts": {
         "mobile":"0493/73.38.22",
         "email":"vanroyesteven@gmail.com",
@@ -43,14 +46,6 @@ var bio = {
 
 var education = {
     "schools" : [
-    {
-        "name": "University Ghent",
-        "location": "Ghent, Belgium",
-        "degree": "Bachelor of Engineering Physics",
-        "dates": " September 2011 - July 2014",
-        "url": "http://www.ugent.be",
-        "majors": ["Engineering","Physics"]
-    },
     {
         "name": "University Ghent",
         "location": "Ghent, Belgium",
@@ -66,13 +61,27 @@ var education = {
         "dates": " September 2015 - July 2016",
         "url": "http://www.upv.es",
         "majors": ["Engineering","Telecommunications"]
+    },
+    {
+        "name": "University Ghent",
+        "location": "Ghent, Belgium",
+        "degree": "Bachelor of Engineering Physics",
+        "dates": " September 2011 - July 2014",
+        "url": "http://www.ugent.be",
+        "majors": ["Engineering","Physics"]
     }
     ],
     "onlineCourses": [
     {
+        "title":"Front-End Web Developer Nanodegree",
+        "school":"Udacity",
+        "dates": " March 2017 - ...",
+        "url": "http://www.udacity.com"
+    },
+    {
         "title":"Android Basics Nanodegree",
         "school":"Udacity",
-        "dates": "2017",
+        "dates": " January 2017 - March 2017",
         "url": "http://www.udacity.com"
     }
     ]
@@ -116,11 +125,11 @@ bio.display = function(){
     $("#header").append(HTMLbioPic.replace("%data%",bio.biopic));
     $("#header").append(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
     if(bio.skills.length > 0){
-     $("#header").append(HTMLskillsStart);
-     for(var i=0;i<bio.skills.length;i++){
+       $("#header").append(HTMLskillsStart);
+       for(var i=0;i<bio.skills.length;i++){
         var formattedSkill =HTMLskills.replace("%data%", bio.skills[i]);
         $("#header").append(formattedSkill);
-        }
+    }
 }
 $("#footerContacts").append(HTMLmobile.replace("%data%",bio.contacts.mobile));
 $("#footerContacts").append(HTMLemail.replace("%data%",bio.contacts.email));
@@ -136,7 +145,8 @@ education.display = function(){
         $(".education-entry:last").append( schoolName+ HTMLschoolDegree.replace("%data%",school.degree));
         $(".education-entry:last").append(HTMLschoolDates.replace("%data%",school.dates));
         $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",school.location));
-        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",school.majors));
+        var schoolMajor =  HTMLschoolMajor.replace("%data%",school.majors.join(", "));
+        $(".education-entry:last").append(schoolMajor);
     });
     if(education.onlineCourses.length >0){
         $("#education").append(HTMLonlineClasses);
